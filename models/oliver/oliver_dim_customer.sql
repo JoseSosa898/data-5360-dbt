@@ -1,16 +1,14 @@
 {{ config(
-    materialized = 'table',
+    materalized = 'table',
     schema = 'dw_oliver'
     )
 }}
 
-
 select
-customerid as cust_key,
-customerid,
-firstname,
-lastname,
-email,
-phonenumber,
-state
-FROM {{ source('oliver_landing', 'customer') }}
+    customerid as customer_key,
+    customerid,
+    firstname,
+    lastname,
+    email,
+    phone
+from {{ source('oliver_landing', 'customers') }}
